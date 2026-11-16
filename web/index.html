@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17201c">
+  <meta name="description" content="Track monthly Canada.ca website usage and compare published metrics.">
+  <title>Canada.ca Pulse · CoolCode</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="hero"><div class="wrap">
+    <div class="mast"><a class="brand" href="https://coolcode.ca/"><span aria-hidden="true">&gt;_</span> CoolCode.ca</a><a href="https://open.canada.ca/data/en/dataset/477da0bc-a3f8-4054-b7be-3a27a575f413">Official dataset ↗</a></div>
+    <div class="intro"><p class="kicker">CANADIAN WEB ANALYTICS</p><h1>Canada.ca Pulse</h1><p>Follow the monthly ebb and flow of Canada’s government website.</p></div>
+  </div></header>
+  <main class="wrap">
+    <section class="metrics" aria-label="Snapshot coverage">
+      <div><strong id="latest">—</strong><span>Latest reported month</span></div>
+      <div><strong id="months">—</strong><span>Months in snapshot</span></div>
+      <div><strong id="series">—</strong><span>Published metric rows</span></div>
+    </section>
+    <p id="load-state" role="status" aria-live="polite">Loading the official CSV snapshot…</p>
+    <div id="workspace" hidden>
+      <section class="panel chart-panel" aria-labelledby="chart-title">
+        <div class="toolbar"><div><h2 id="chart-title">Compare trends</h2><p class="description">Select one or two published metrics. Pick a month on the chart for exact values.</p></div><button id="export" type="button">Download comparison CSV</button></div>
+        <div class="controls">
+          <label>Primary metric <select id="first"></select></label>
+          <label>Compare with <select id="second"><option value="">No comparison</option></select></label>
+          <label>From <select id="from"></select></label>
+          <label>Through <select id="to"></select></label>
+        </div>
+        <label class="inline"><input type="checkbox" id="index"> Index each metric to its first positive value (100)</label>
+        <p id="range-note" class="description" role="status"></p>
+        <div class="graphic"><svg id="plot" viewBox="0 0 800 310" role="img" aria-label="Monthly metric chart"></svg></div>
+        <div id="legend" class="chips"></div>
+        <input id="cursor" aria-label="Choose a month to inspect" type="range" min="0" value="0">
+        <div id="focus" class="panel" aria-live="polite"></div>
+        <details id="values"><summary>View all values for the selected metrics</summary><div id="table" class="table"></div></details>
+      </section>
+      <div class="columns">
+        <section class="panel catalogue" aria-labelledby="catalogue-title"><h2 id="catalogue-title">Explore a metric</h2><label for="filter">Find metrics by report label</label><input id="filter" type="search" placeholder="Try visits, devices or search"><p id="filter-count" role="status" class="description"></p><ul id="catalogue"></ul></section>
+        <aside class="right">
+          <section class="panel notes"><h2>Mark a service event</h2><p>Add a month and label to compare a known outage, launch, or service change with the chart. Timing alone does not establish a cause.</p>
+            <form id="event-form"><label>Month <select id="event-month"></select></label><label>Label <input id="event-title" type="text" maxlength="120" required placeholder="e.g. Service launch"></label><button type="submit">Add chart marker</button></form>
+            <ul id="events"></ul>
+          </section>
+          <section class="panel notes"><h2>About the data</h2><p>The source is a rolling 36-month report. Blank or missing values are left as gaps. Counts and rates keep the publisher’s units. Indexed comparisons are relative changes.</p><p id="source-dates"></p><a href="https://open.canada.ca/data/en/dataset/477da0bc-a3f8-4054-b7be-3a27a575f413">Download original report ↗</a></section>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer><div class="wrap">Source: Employment and Social Development Canada, Citizen Services Branch. Contains information licensed under the <a href="https://open.canada.ca/en/open-government-licence-canada">Open Government Licence – Canada</a>. <a href="https://github.com/jsdyer/canadaanalytics">Source code ↗</a></div></footer>
+</body>
+</html>
