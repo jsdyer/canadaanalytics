@@ -1,0 +1,22 @@
+{
+  "id": "canadaanalytics",
+  "title": "Canada.ca Pulse",
+  "description": "Explore recent patterns in federal government website usage.",
+  "category": "explorers",
+  "tags": [
+    "government",
+    "canada",
+    "traffic",
+    "analytics"
+  ],
+  "icon": "chart-no-axes-combined",
+  "url": "/canadaanalytics/",
+  "source": "https://github.com/jsdyer/canadaanalytics",
+  "hosting": "project",
+  "access": "browser",
+  "data_info": {
+    "mode": "snapshot",
+    "detail": "Employment and Social Development Canada publishes monthly measures of Canada.ca usage and services.",
+    "cadence": "Daily"
+  }
+}

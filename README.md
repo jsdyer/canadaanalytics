@@ -1,5 +1,9 @@
 # Canada.ca Pulse
 
+<!-- coolcode:guide -->
+Choose series and a date range, inspect monthly values, and optionally index each series to its first positive observation. Locally saved annotations can mark a service change; matching timing does not establish why traffic changed.
+<!-- /coolcode:guide -->
+
 A browser-only dashboard for Employment and Social Development Canada's [Canada.ca analytics monthly report](https://open.canada.ca/data/en/dataset/477da0bc-a3f8-4054-b7be-3a27a575f413), published at <https://coolcode.ca/canadaanalytics/> when GitHub Pages deployment succeeds.
 
 Compare published numeric series over any portion of the rolling window, inspect the exact source values for each month, or export the comparison as a CSV. An optional index uses the first positive value in range as the baseline (100) for each series. Text and mixed-type source rows are available as monthly values. The app leaves gaps for missing values. Mark service changes on the chart using annotations saved locally in your browser. A marker shows timing and does not establish causation.
