@@ -14,18 +14,13 @@
 <body>
   <header class="hero"><div class="wrap">
     <div class="mast"><a class="brand" href="https://coolcode.ca/"><span aria-hidden="true">&gt;_</span> CoolCode.ca</a><a href="https://open.canada.ca/data/en/dataset/477da0bc-a3f8-4054-b7be-3a27a575f413">Official dataset ↗</a></div>
-    <div class="intro"><p class="kicker">CANADIAN WEB ANALYTICS</p><h1>Canada.ca Pulse</h1><p>Follow the monthly ebb and flow of Canada’s government website.</p></div>
+    <div class="intro"><p class="kicker">CANADA.CA PULSE</p><h1>Canada.ca website traffic</h1><p><!-- visits-finding -->Compare monthly visits, page views and other published measures.</p></div>
   </div></header>
   <main class="wrap">
-    <section class="metrics" aria-label="Snapshot coverage">
-      <div><strong id="latest">—</strong><span>Latest reported month</span></div>
-      <div><strong id="months">—</strong><span>Months in snapshot</span></div>
-      <div><strong id="series">—</strong><span>Published metric rows</span></div>
-    </section>
     <p id="load-state" role="status" aria-live="polite">Loading the official CSV snapshot…</p>
     <div id="workspace" hidden>
       <section class="panel chart-panel" aria-labelledby="chart-title">
-        <div class="toolbar"><div><h2 id="chart-title">Compare trends</h2><p class="description">Select one or two published metrics. Pick a month on the chart for exact values.</p></div><button id="export" type="button">Download comparison CSV</button></div>
+        <div class="toolbar"><div><h2 id="chart-title">Compare trends</h2><p class="description">Choose a measure, then select a month on the chart to read its value. Add a second measure to compare trends.</p></div><button id="export" type="button">Download comparison CSV</button></div>
         <div class="controls">
           <label>Primary metric <select id="first"></select></label>
           <label>Compare with <select id="second"><option value="">No comparison</option></select></label>
@@ -40,6 +35,11 @@
         <div id="focus" class="panel" aria-live="polite"></div>
         <details id="values"><summary>View all values for the selected metrics</summary><div id="table" class="table"></div></details>
       </section>
+    <section class="metrics" aria-label="Snapshot coverage">
+      <div><strong id="latest">—</strong><span>Latest reported month</span></div>
+      <div><strong id="months">—</strong><span>Months in snapshot</span></div>
+      <div><strong id="series">—</strong><span>Published metric rows</span></div>
+    </section>
       <div class="columns">
         <section class="panel catalogue" aria-labelledby="catalogue-title"><h2 id="catalogue-title">Explore a metric</h2><label for="filter">Find metrics by report label</label><input id="filter" type="search" placeholder="Try visits, devices or search"><p id="filter-count" role="status" class="description"></p><ul id="catalogue"></ul></section>
         <aside class="right">

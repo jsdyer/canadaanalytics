@@ -134,6 +134,17 @@ def build(content, modified, output):
     with TemporaryDirectory(prefix="canada-pulse-", dir=output.parent) as temporary:
         stage = Path(temporary) / "site"
         shutil.copytree(ROOT / "web", stage)
+        visits = next((row for row in series if row["group"] == "Monthly metrics" and
+                      row["unit"] == "number" and row["label"].casefold() in {"visits", "total visits"}), None)
+        finding = ""
+        if visits:
+            for month, value in reversed(list(zip(months, visits["values"]))):
+                if value is not None:
+                    when = datetime.strptime(month, "%Y-%m").strftime("%B %Y")
+                    finding = f"Canada.ca recorded {value:,.0f} visits in {when}. "
+                    break
+        entry = stage / "index.html"
+        entry.write_text(entry.read_text(encoding="utf-8").replace("<!-- visits-finding -->", finding), encoding="utf-8")
         asset = stage / "data"
         asset.mkdir()
         payload = {"version": 1, "months": months, "series": series, "sourceUpdated": modified,
